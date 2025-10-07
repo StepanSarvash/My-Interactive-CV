@@ -6,6 +6,7 @@
   <title>Stepan Sarvash – Interactive CV</title>
   <meta name="description" content="Interactive resume of Stepan Sarvash – Accounting Advisor focused on revenue accounting, statutory reporting, and process automation." />
   <meta name="color-scheme" content="light dark" />
+  <!-- Prevent iOS Safari auto-linking that can look like duplicates -->
   <meta name="format-detection" content="telephone=no,email=no,address=no">
   <meta property="og:title" content="Stepan Sarvash – Interactive CV" />
   <meta property="og:description" content="Accounting Advisor with 4+ years of experience in revenue accounting, statutory reporting, and financial analysis." />
@@ -22,9 +23,16 @@
     }
     [data-theme="light"]{--bg:#fff;--text:#0b1220;--muted:#5b6b8b;--accent:#0f766e;--accent-2:#065f46;--chip-bg:#eef2ff;--border:#e5e7eb;--card:#f8fafc;}
     [data-theme="dark"]{--bg:#0b1220;--text:#e6edf3;--muted:#9fb0c7;--accent:#2dd4bf;--accent-2:#14b8a6;--chip-bg:#12263a;--border:#1f2937;--card:#0f172a;}
+
     html,body{height:100%}
-    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Noto Sans,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text)}
-    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    body{
+      margin:0;
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Noto Sans,"Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);color:var(--text)
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
     .container{max-width:1100px;margin:0 auto;padding:24px}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
     .id{display:flex;flex-direction:column;gap:4px}
@@ -33,13 +41,17 @@
     .toolbar{display:flex;gap:8px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
     .btn:hover{border-color:var(--accent)}
-    .layout{display:grid;grid-template-columns:320px 1fr;gap:24px;margin-top:24px}
-    @media (max-width:900px){.layout{grid-template-columns:1fr}header{align-items:start}}
+
+    /* Layout: keep two columns down to 700px (tighter than before) */
+    .layout{display:grid;grid-template-columns:320px 1fr;gap:24px;margin-top:24px;align-items:start}
+    @media (max-width:700px){ .layout{grid-template-columns:1fr} header{align-items:start} }
+
     aside,main section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
     h2{margin:0 0 10px;font-size:20px}
     .contact li{list-style:none;display:flex;align-items:center;gap:10px;margin:6px 0}
     .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--chip-bg);border:1px solid var(--border);font-size:13px}
     .chips{display:flex;flex-wrap:wrap;gap:8px}
+
     .section+.section{margin-top:16px}
     .entry{display:grid;grid-template-columns:1fr auto;gap:8px;padding:12px;border:1px solid var(--border);border-radius:10px;background:transparent}
     .entry+.entry{margin-top:10px}
@@ -47,15 +59,27 @@
     .meta{color:var(--muted);font-size:14px}
     .bullets{margin:8px 0 0 16px}
     .bullets li{margin:6px 0}
+
     details.accordion{border:1px solid var(--border);border-radius:10px;padding:8px 12px;background:transparent}
     details.accordion+details.accordion{margin-top:10px}
     details.accordion summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between}
     details.accordion[open]{background:linear-gradient(0deg,rgba(0,0,0,0.02),rgba(0,0,0,0.02))}
+
     .search{display:flex;gap:8px}
     .search input{flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text)}
+
     footer{margin:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
-    @media print{.toolbar,.search,.theme,.actions{display:none!important}body{background:#fff;color:#000}a{color:#000;text-decoration:none}header{border:none}aside,main section{border:none}}
+
+    @media print{
+      .toolbar,.search,.theme,.actions{display:none!important}
+      body{background:#fff;color:#000}
+      a{color:#000;text-decoration:none}
+      header{border:none}
+      aside,main section{border:none}
+    }
   </style>
+
+  <!-- Structured data (doesn't affect what you see on the page) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -90,19 +114,19 @@
         <ul class="contact" aria-label="Contact details">
           <li>📍 Bratislava, Slovakia</li>
 
-          <!-- FIX: Visible once; button copies silently -->
+          <!-- Phone: visible once; Copy button copies silently -->
           <li>
             📞 tel:+421950297114+421 950 297 114</a>
             <button class="btn" data-copy="+421950297114" style="padding:4px 8px;font-size:12px;" aria-label="Copy phone number">Copy</button>
           </li>
 
-          <!-- Email shows address only -->
+          <!-- Email: visible once; Copy button copies silently -->
           <li>
             ✉️ mailto:stevendennet@gmail.comstevendennet@gmail.com</a>
             <button class="btn" data-copy="stevendennet@gmail.com" style="padding:4px 8px;font-size:12px;" aria-label="Copy email">Copy</button>
           </li>
 
-          <li>🔗 <a href="https://linkedin.com/in/stepan-sarvash-159kedIn</a></li>
+          <li>🔗 https://linkedin.com/in/stepan-sarvash-1590b3183LinkedIn</a></li>
         </ul>
 
         <div class="section">
@@ -125,8 +149,15 @@
             <span class="badge">Alteryx Designer (certified)</span>
           </div>
         </div>
+      </aside>
 
-        <div class="section">
+      <main>
+        <section class="section">
+          <h2>Profile</h2>
+          <p>Driven by facts, fueled by results, and guided by optimism, I bring clarity and directness to every endeavor. With 4+ years of diverse experience in revenue accounting, statutory reporting, and financial analysis, I specialize in delivering accurate, data‑driven insights that support informed decision‑making and business growth. I am highly proficient in SAP S/4HANA and Excel, and hold a certification in Alteryx Designer. My hands‑on experience with Power Automate enables me to streamline processes and enhance operational efficiency. Committed to continuous improvement, I thrive in fast‑paced environments where precision, accountability, and innovation are key to success.</p>
+        </section>
+
+        <section class="section">
           <h2>Education</h2>
           <div class="entry">
             <div>
@@ -140,13 +171,6 @@
               <div class="meta">BSc, International Economic Relations · 2017 – 2021</div>
             </div>
           </div>
-        </div>
-      </aside>
-
-      <main>
-        <section class="section">
-          <h2>Profile</h2>
-          <p>Driven by facts, fueled by results, and guided by optimism, I bring clarity and directness to every endeavor. With 4+ years of diverse experience in revenue accounting, statutory reporting, and financial analysis, I specialize in delivering accurate, data‑driven insights that support informed decision‑making and business growth. I am highly proficient in SAP S/4HANA and Excel, and hold a certification in Alteryx Designer. My hands‑on experience with Power Automate enables me to streamline processes and enhance operational efficiency. Committed to continuous improvement, I thrive in fast‑paced environments where precision, accountability, and innovation are key to success.</p>
         </section>
 
         <section class="section">
@@ -186,7 +210,7 @@
         <section class="section">
           <h2>Actions</h2>
           <div class="toolbar actions">
-            <buttonstevendennet@gmail.comEmail me</button>
+            <!-- Removed 'Email me' to avoid email appearing twice on the page -->
             https://linkedin.com/in/stepan-sarvash-1590b3183Open LinkedIn</button>
             <button class="btn" id="expandAll">Expand all</button>
             <button class="btn" id="collapseAll">Collapse all</button>
