@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stepan Sarvash – Interactive CV</title>
+  <meta name="description" content="Interactive resume of Stepan Sarvash – Accounting Advisor focused on revenue accounting, statutory reporting, and process automation." />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="Stepan Sarvash – Interactive CV" />
+  <meta property="og:description" content="Accounting Advisor with 4+ years of experience in revenue accounting, statutory reporting, and financial analysis." />
+  <meta property="og:type" content="profile" />
+  <meta name="theme-color" content="#0f766e" />
+  <style>
+    :root {
+      --bg:#fff;--text:#0b1220;--muted:#5b6b8b;--accent:#0f766e;--accent-2:#065f46;
+      --chip-bg:#eef2ff;--border:#e5e7eb;--card:#f8fafc;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b1220;--text:#e6edf3;--muted:#9fb0c7;--accent:#2dd4bf;--accent-2:#14b8a6;
+            --chip-bg:#12263a;--border:#1f2937;--card:#0f172a;}
+    }
+    [data-theme="light"]{--bg:#fff;--text:#0b1220;--muted:#5b6b8b;--accent:#0f766e;--accent-2:#065f46;--chip-bg:#eef2ff;--border:#e5e7eb;--card:#f8fafc;}
+    [data-theme="dark"]{--bg:#0b1220;--text:#e6edf3;--muted:#9fb0c7;--accent:#2dd4bf;--accent-2:#14b8a6;--chip-bg:#12263a;--border:#1f2937;--card:#0f172a;}
+    html,body{height:100%}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Noto Sans,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text)}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .id{display:flex;flex-direction:column;gap:4px}
+    .name{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:.2px}
+    .role{font-size:18px;color:var(--muted)}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+    .btn:hover{border-color:var(--accent)}
+    .layout{display:grid;grid-template-columns:320px 1fr;gap:24px;margin-top:24px}
+    @media (max-width:900px){.layout{grid-template-columns:1fr}header{align-items:start}}
+    aside,main section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+    h2{margin:0 0 10px;font-size:20px}
+    .contact li{list-style:none;display:flex;align-items:center;gap:10px;margin:6px 0}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--chip-bg);border:1px solid var(--border);font-size:13px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .section+.section{margin-top:16px}
+    .entry{display:grid;grid-template-columns:1fr auto;gap:8px;padding:12px;border:1px solid var(--border);border-radius:10px;background:transparent}
+    .entry+.entry{margin-top:10px}
+    .entry h3{margin:0;font-size:17px}
+    .meta{color:var(--muted);font-size:14px}
+    .bullets{margin:8px 0 0 16px}
+    .bullets li{margin:6px 0}
+    details.accordion{border:1px solid var(--border);border-radius:10px;padding:8px 12px;background:transparent}
+    details.accordion+details.accordion{margin-top:10px}
+    details.accordion summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between}
+    details.accordion[open]{background:linear-gradient(0deg,rgba(0,0,0,0.02),rgba(0,0,0,0.02))}
+    .search{display:flex;gap:8px}
+    .search input{flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text)}
+    footer{margin:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+    @media print{.toolbar,.search,.theme,.actions{display:none!important}body{background:#fff;color:#000}a{color:#000;text-decoration:none}header{border:none}aside,main section{border:none}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Stepan Sarvash",
+    "jobTitle": "Accounting Advisor",
+    "email": "mailto:stevendennet@gmail.com",
+    "telephone": "+421950297114",
+    "address": {"@type": "PostalAddress", "addressLocality": "Bratislava", "addressCountry": "SK"},
+    "sameAs": ["https://linkedin.com/in/stepan-sarvash-1590b3183"]
+  }
+  </script>
+</head>
+<body>
+  #contentSkip to content</a>
+  <div class="container">
+    <header>
+      <div class="id">
+        <div class="name">Stepan Sarvash</div>
+        <div class="role">Accounting Advisor</div>
+      </div>
+      <div class="toolbar">
+        <button class="btn" id="themeBtn" title="Toggle theme">🌓 Theme</button>
+        <button class="btn" onclick="window.print()" title="Print / Save as PDF">🖨️ Print</button>
+        MyCV_SSA.pdf⬇️ Download PDF</a>
+      </div>
+    </header>
+
+    <div class="layout" id="content">
+      <aside>
+        <h2>Contact</h2>
+        <ul class="contact" aria-label="Contact details">
+          <li>📍 Bratislava, Slovakia</li>
+          <li>📞 tel:+421950297114+421 950 297 114</a> <button class="btn" data-copy="+421 950 297 114" style="padding:4px 8px;font-size:12px;">Copy</button></li>
+          <li>✉️ mailto:stevendennet@gmail.comstevendennet@gmail.com</a> <button class="btn" data-copy="stevendennet@gmail.com" style="padding:4px 8px;font-size:12px;">Copy</button></li>
+          <li>🔗 https://linkedin.com/in/stepan-sarvash-1590b3183LinkedIn</a></li>
+        </ul>
+
+        <div class="section">
+          <h2>Skills</h2>
+          <div class="search" style="margin-bottom:10px;">
+            <input id="skillSearch" type="search" placeholder="Filter skills…" aria-label="Filter skills" />
+          </div>
+          <div class="chips" id="skills">
+            <span class="badge">Revenue Recognition (ASC 606)</span>
+            <span class="badge">Account Reconciliations</span>
+            <span class="badge">MJEs & Close</span>
+            <span class="badge">SAP S/4HANA</span>
+            <span class="badge">Power Automate</span>
+            <span class="badge">Analytical thinking</span>
+            <span class="badge">Teamwork</span>
+            <span class="badge">Process Improvement</span>
+            <span class="badge">Cross‑functional comms</span>
+            <span class="badge">Deadline management</span>
+            <span class="badge">Excel (advanced)</span>
+            <span class="badge">Alteryx Designer (certified)</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Education</h2>
+          <div class="entry">
+            <div>
+              <h3>Association of Chartered Certified Accountants (ACCA)</h3>
+              <div class="meta">2023 – Present</div>
+            </div>
+          </div>
+          <div class="entry">
+            <div>
+              <h3>University of Economics in Bratislava</h3>
+              <div class="meta">BSc, International Economic Relations · 2017 – 2021</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main>
+        <section class="section">
+          <h2>Profile</h2>
+          <p>Driven by facts, fueled by results, and guided by optimism, I bring clarity and directness to every endeavor. With 4+ years of diverse experience in revenue accounting, statutory reporting, and financial analysis, I specialize in delivering accurate, data‑driven insights that support informed decision‑making and business growth. I am highly proficient in SAP S/4HANA and Excel, and hold a certification in Alteryx Designer. My hands‑on experience with Power Automate enables me to streamline processes and enhance operational efficiency. Committed to continuous improvement, I thrive in fast‑paced environments where precision, accountability, and innovation are key to success.</p>
+        </section>
+
+        <section class="section">
+          <h2>Experience</h2>
+
+          <details class="accordion" open>
+            <summary>
+              <div>
+                <strong>Dell Technologies</strong> — Accounting Advisor · Revenue Accounting
+                <div class="meta">Jul 2024 – Present · Bratislava, Slovakia</div>
+              </div>
+              <span aria-hidden="true">▾</span>
+            </summary>
+            <ul class="bullets">
+              <li>Calculate and book returns provision for LATAM region in line with US GAAP and internal policies.</li>
+              <li>Perform variance analysis and return‑rate modeling to support forecasting and quarter‑end close.</li>
+              <li>Develop Power Automate flows to replace manual status tracking and improve process efficiency.</li>
+            </ul>
+          </details>
+
+          <details class="accordion">
+            <summary>
+              <div>
+                <strong>Dell Technologies</strong> — Accounting Analyst · Statutory & Rebates Accounting
+                <div class="meta">2021 – 2024 · Bratislava, Slovakia</div>
+              </div>
+              <span aria-hidden="true">▾</span>
+            </summary>
+            <ul class="bullets">
+              <li>Supported statutory reporting and audit deliverables across multiple European entities.</li>
+              <li>Processed and reconciled vendor rebates, ensuring accuracy and contract compliance.</li>
+              <li>Built Excel tools to optimize reconciliations and reduce manual reporting time.</li>
+            </ul>
+          </details>
+        </section>
+
+        <section class="section">
+          <h2>Actions</h2>
+          <div class="toolbar actions">
+            <button class="btn" onclick="location.href='mailto:stevendennet@gmail.comin.com/in/stepan-sarvash-1590b3183Open LinkedIn</button>
+            <button class="btn" id="expandAll">Expand all</button>
+            <button class="btn" id="collapseAll">Collapse all</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      © <span id="y"></span> Stepan Sarvash. This page is a single-file, print‑friendly, accessible résumé with light/dark theme, filters, and expandable sections.
+    </footer>
+  </div>
+
+  <script>
+    // Theme toggle with localStorage
+    const htmlEl = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    function setTheme(t){ htmlEl.setAttribute('data-theme', t); localStorage.setItem('cv-theme', t); }
+    (function initTheme(){ const t = localStorage.getItem('cv-theme'); if(t){ setTheme(t); } })();
+    themeBtn?.addEventListener('click', ()=>{
+      const cur = htmlEl.getAttribute('data-theme') || 'system';
+      setTheme(cur === 'dark' ? 'light' : cur === 'light' ? 'system' : 'dark');
+      themeBtn.textContent = '🌓 ' + (htmlEl.getAttribute('data-theme')||'system');
+    });
+
+    // Copy buttons
+    document.querySelectorAll('[data-copy]')?.forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        try { await navigator.clipboard.writeText(btn.getAttribute('data-copy'));
+              btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy',1200);}
+        catch(e){ alert('Copy failed'); }
+      });
+    });
+
+    // Skill filter
+    const input = document.getElementById('skillSearch');
+    const skillsWrap = document.getElementById('skills');
+    input?.addEventListener('input', ()=>{
+      const q = input.value.trim().toLowerCase();
+      skillsWrap.querySelectorAll('.badge').forEach(b=>{
+        b.style.display = b.textContent.toLowerCase().includes(q)?'inline-flex':'none';
+      });
+    });
+
+    // Expand/Collapse all
+    document.getElementById('expandAll')?.addEventListener('click', ()=>document.querySelectorAll('details.accordion').forEach(d=>d.open=true));
+    document.getElementById('collapseAll')?.addEventListener('click', ()=>document.querySelectorAll('details.accordion').forEach(d=>d.open=false));
+
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
