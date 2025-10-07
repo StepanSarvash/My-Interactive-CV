@@ -69,7 +69,7 @@
   </script>
 </head>
 <body>
-  #contentSkip to content</a>
+  <a href="#ip to content</a>
   <div class="container">
     <header>
       <div class="id">
@@ -88,8 +88,19 @@
         <h2>Contact</h2>
         <ul class="contact" aria-label="Contact details">
           <li>📍 Bratislava, Slovakia</li>
-          <li>📞 tel:+421950297114+421 950 297 114</a> <button class="btn" data-copy="+421 950 297 114" style="padding:4px 8px;font-size:12px;">Copy</button></li>
-          <li>✉️ mailto:stevendennet@gmail.comstevendennet@gmail.com</a> <button class="btn" data-copy="stevendennet@gmail.com" style="padding:4px 8px;font-size:12px;">Copy</button></li>
+
+          <!-- FIXED: phone shows once; button copies silently -->
+          <li>
+            📞 tel:+421950297114+421 950 297 114</a>
+            <button class="btn" data-copy="+421950297114" style="padding:4px 8px;font-size:12px;">Copy</button>
+          </li>
+
+          <!-- FIXED: email text is just the address (no visible 'mailto:') -->
+          <li>
+            ✉️ mailto:stevendennet@gmail.comstevendennet@gmail.com</a>
+            <button class="btn" data-copy="stevendennet@gmail.com" style="padding:4px 8px;font-size:12px;">Copy</button>
+          </li>
+
           <li>🔗 https://linkedin.com/in/stepan-sarvash-1590b3183LinkedIn</a></li>
         </ul>
 
@@ -174,7 +185,8 @@
         <section class="section">
           <h2>Actions</h2>
           <div class="toolbar actions">
-            <button class="btn" onclick="location.href='mailto:stevendennet@gmail.comin.com/in/stepan-sarvash-1590b3183Open LinkedIn</button>
+            <button class="btn" onclick="location.hrefton>
+            https://linkedin.com/in/stepan-sarvash-1590b3183Open LinkedIn</button>
             <button class="btn" id="expandAll">Expand all</button>
             <button class="btn" id="collapseAll">Collapse all</button>
           </div>
@@ -199,12 +211,15 @@
       themeBtn.textContent = '🌓 ' + (htmlEl.getAttribute('data-theme')||'system');
     });
 
-    // Copy buttons
+    // Copy buttons (silent copy; label doesn't display the number/email)
     document.querySelectorAll('[data-copy]')?.forEach(btn=>{
       btn.addEventListener('click', async ()=>{
-        try { await navigator.clipboard.writeText(btn.getAttribute('data-copy'));
-              btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy',1200);}
-        catch(e){ alert('Copy failed'); }
+        try {
+          await navigator.clipboard.writeText(btn.getAttribute('data-copy'));
+          const old = btn.textContent;
+          btn.textContent='Copied!';
+          setTimeout(()=>btn.textContent=old, 1200);
+        } catch(e){ alert('Copy failed'); }
       });
     });
 
@@ -226,3 +241,4 @@
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
+</html>
