@@ -4,25 +4,30 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stepan Sarvash – Interactive CV</title>
+
+  <!-- SEO & social -->
+  https://stepansarvash.github.io/My-Interactive-CV/
   <meta name="description" content="Interactive resume of Stepan Sarvash – Accounting Advisor focused on revenue accounting, statutory reporting, and process automation." />
   <meta name="color-scheme" content="light dark" />
-  <!-- Prevent iOS Safari auto-linking that can look like duplicates -->
+  <!-- Prevent iOS Safari from auto-linking/duplicating phone/email -->
   <meta name="format-detection" content="telephone=no,email=no,address=no">
   <meta property="og:title" content="Stepan Sarvash – Interactive CV" />
   <meta property="og:description" content="Accounting Advisor with 4+ years of experience in revenue accounting, statutory reporting, and financial analysis." />
   <meta property="og:type" content="profile" />
   <meta name="theme-color" content="#0f766e" />
-  <style>
-    :root {
-      --bg:#fff;--text:#0b1220;--muted:#5b6b8b;--accent:#0f766e;--accent-2:#065f46;
-      --chip-bg:#eef2ff;--border:#e5e7eb;--card:#f8fafc;
+
+  <!-- (Optional) tiny emoji favicon to avoid 404 in tab -->
+  <link rel="icon" href="data:image/svg+xml,
+    %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E
+    %3Ctext y='.9em' font-size='90'%--chip-bg:#eef2ff;--border:#e5e7eb;--card:#f8fafc;
+      --focus:#7dd3fc;
     }
     @media (prefers-color-scheme: dark){
       :root{--bg:#0b1220;--text:#e6edf3;--muted:#9fb0c7;--accent:#2dd4bf;--accent-2:#14b8a6;
-            --chip-bg:#12263a;--border:#1f2937;--card:#0f172a;}
+            --chip-bg:#12263a;--border:#1f2937;--card:#0f172a;--focus:#155e75;}
     }
-    [data-theme="light"]{--bg:#fff;--text:#0b1220;--muted:#5b6b8b;--accent:#0f766e;--accent-2:#065f46;--chip-bg:#eef2ff;--border:#e5e7eb;--card:#f8fafc;}
-    [data-theme="dark"]{--bg:#0b1220;--text:#e6edf3;--muted:#9fb0c7;--accent:#2dd4bf;--accent-2:#14b8a6;--chip-bg:#12263a;--border:#1f2937;--card:#0f172a;}
+    [data-theme="light"]{--bg:#fff;--text:#0b1220;--muted:#5b6b8b;--accent:#0f766e;--accent-2:#065f46;--chip-bg:#eef2ff;--border:#e5e7eb;--card:#f8fafc;--focus:#7dd3fc;}
+    [data-theme="dark"]{--bg:#0b1220;--text:#e6edf3;--muted:#9fb0c7;--accent:#2dd4bf;--accent-2:#14b8a6;--chip-bg:#12263a;--border:#1f2937;--card:#0f172a;--focus:#155e75;}
 
     html,body{height:100%}
     body{
@@ -32,21 +37,43 @@
     }
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
+    :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .container{max-width:1100px;margin:0 auto;padding:20px 24px 32px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
     .id{display:flex;flex-direction:column;gap:4px}
     .name{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:.2px}
     .role{font-size:18px;color:var(--muted)}
     .toolbar{display:flex;gap:8px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
     .btn:hover{border-color:var(--accent)}
+    .btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 
-    /* Layout: keep two columns down to 700px (tighter than before) */
-    .layout{display:grid;grid-template-columns:320px 1fr;gap:24px;margin-top:24px;align-items:start}
-    @media (max-width:700px){ .layout{grid-template-columns:1fr} header{align-items:start} }
+    /* Top nav for quick jumps */
+    nav.topnav{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    nav.topnav a{padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:var(--card);font-size:14px}
+    nav.topnav a[aria-current="true"]{border-color:var(--accent);color:var(--accent-2);font-weight:700}
 
-    aside,main section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+    /* Two-column layout */
+    .layout{
+      display:grid;grid-template-columns:320px 1fr;gap:24px;margin-top:18px;align-items:start
+    }
+    /* Keep columns side-by-side down to 700px; then stack */
+    @media (max-width:700px){
+      .layout{grid-template-columns:1fr}
+      header{align-items:start}
+      nav.topnav{margin-top:12px}
+    }
+
+    /* Sticky sidebar on desktop */
+    aside{
+      position:sticky;top:24px;height:fit-content;
+      background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px
+    }
+    @media (max-width:700px){ aside{position:static} }
+
+    main section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
     h2{margin:0 0 10px;font-size:20px}
     .contact li{list-style:none;display:flex;align-items:center;gap:10px;margin:6px 0}
     .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--chip-bg);border:1px solid var(--border);font-size:13px}
@@ -68,43 +95,54 @@
     .search{display:flex;gap:8px}
     .search input{flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text)}
 
+    .actionsbar{display:flex;gap:8px;flex-wrap:wrap}
+
     footer{margin:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
 
+    /* Motion safety */
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto!important;animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+    }
+
+    /* Print: minimal chrome, expand all details */
     @media print{
-      .toolbar,.search,.theme,.actions{display:none!important}
+      .toolbar, nav.topnav, .search, .actionsbar, .theme, .actions{display:none!important}
       body{background:#fff;color:#000}
       a{color:#000;text-decoration:none}
-      header{border:none}
-      aside,main section{border:none}
+      header{border:none;padding-bottom:0}
+      aside, main section{border:none}
+      .layout{grid-template-columns:1fr}
     }
   </style>
 
-  <!-- Structured data (doesn't affect what you see on the page) -->
+  <!-- Structured data (search engines only) -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Stepan Sarvash",
-    "jobTitle": "Accounting Advisor",
-    "email": "mailto:stevendennet@gmail.com",
-    "telephone": "+421950297114",
-    "address": {"@type": "PostalAddress", "addressLocality": "Bratislava", "addressCountry": "SK"},
-    "sameAs": ["https://linkedin.com/in/stepan-sarvash-1590b3183"]
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Stepan Sarvash",
+    "jobTitle":"Accounting Advisor",
+    "email":"mailto:stevendennet@gmail.com",
+    "telephone":"+421950297114",
+    "address":{"@type":"PostalAddress","addressLocality":"Bratislava","addressCountry":"SK"},
+    "sameAs":["https://linkedin.com/in/stepan-sarvash-1590b3183"]
   }
   </script>
 </head>
 <body>
-  #contentSkip to content</a>
-  <div class="container">
-    <header>
-      <div class="id">
-        <div class="name">Stepan Sarvash</div>
+  <a href="#content" class="visually-hidden" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflowtepan Sarvash</div>
         <div class="role">Accounting Advisor</div>
+        <!-- Quick in-page navigation -->
+        <nav class="topnav" aria-label="Section navigation">
+          #profileProfile</a>
+          <a href="#education" id
+          #experienceExperience</a>
+          <a href="#actions"   id     </nav>
       </div>
       <div class="toolbar">
         <button class="btn" id="themeBtn" title="Toggle theme">🌓 Theme</button>
         <button class="btn" onclick="window.print()" title="Print / Save as PDF">🖨️ Print</button>
-        MyCV_SSA.pdf⬇️ Download PDF</a>
+        <a class="btn" href="MyCV_S</a>
       </div>
     </header>
 
@@ -113,21 +151,15 @@
         <h2>Contact</h2>
         <ul class="contact" aria-label="Contact details">
           <li>📍 Bratislava, Slovakia</li>
-
-          <!-- Phone: visible once; Copy button copies silently -->
           <li>
             📞 tel:+421950297114+421 950 297 114</a>
             <button class="btn" data-copy="+421950297114" style="padding:4px 8px;font-size:12px;" aria-label="Copy phone number">Copy</button>
           </li>
-
-          <!-- Email: visible once; Copy button copies silently -->
           <li>
-            ✉️ mailto:stevendennet@gmail.comstevendennet@gmail.com</a>
+            ✉️ <a hrefstevendennet@gmail.comstevendennet@gmail.com</a>
             <button class="btn" data-copy="stevendennet@gmail.com" style="padding:4px 8px;font-size:12px;" aria-label="Copy email">Copy</button>
           </li>
-
-          <li>🔗 https://linkedin.com/in/stepan-sarvash-1590b3183LinkedIn</a></li>
-        </ul>
+          <li>🔗 <a href="https://linkedin.com/in/stepan-sarvash-1590b3183" target="_      </ul>
 
         <div class="section">
           <h2>Skills</h2>
@@ -152,12 +184,12 @@
       </aside>
 
       <main>
-        <section class="section">
+        <section class="section" id="profile" tabindex="-1">
           <h2>Profile</h2>
           <p>Driven by facts, fueled by results, and guided by optimism, I bring clarity and directness to every endeavor. With 4+ years of diverse experience in revenue accounting, statutory reporting, and financial analysis, I specialize in delivering accurate, data‑driven insights that support informed decision‑making and business growth. I am highly proficient in SAP S/4HANA and Excel, and hold a certification in Alteryx Designer. My hands‑on experience with Power Automate enables me to streamline processes and enhance operational efficiency. Committed to continuous improvement, I thrive in fast‑paced environments where precision, accountability, and innovation are key to success.</p>
         </section>
 
-        <section class="section">
+        <section class="section" id="education" tabindex="-1">
           <h2>Education</h2>
           <div class="entry">
             <div>
@@ -173,7 +205,7 @@
           </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="experience" tabindex="-1">
           <h2>Experience</h2>
 
           <details class="accordion" open>
@@ -207,43 +239,53 @@
           </details>
         </section>
 
-        <section class="section">
+        <section class="section" id="actions" tabindex="-1">
           <h2>Actions</h2>
-          <div class="toolbar actions">
-            <!-- Removed 'Email me' to avoid email appearing twice on the page -->
-            https://linkedin.com/in/stepan-sarvash-1590b3183Open LinkedIn</button>
-            <button class="btn" id="expandAll">Expand all</button>
+          <div class="actionsbar">
+            <!-- Keep email only in Contact to avoid duplication on page -->
+            <a class="btn" href="https://linkedin.com/in/stepan-sarvash-1590b3183" target="_blank" rel="noopener="expandAll">Expand all</button>
             <button class="btn" id="collapseAll">Collapse all</button>
-          </div>
-        </section>
-      </main>
-    </div>
-
-    <footer>
-      © <span id="y"></span> Stepan Sarvash. This page is a single-file, print‑friendly, accessible résumé with light/dark theme, filters, and expandable sections.
+            <a class="btn" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return falseoter>
+      © <span id="y"></span> Stepan Sarvash. Single-file, print‑friendly, accessible résumé with light/dark theme, filters, and expandable sections.
     </footer>
   </div>
+
+  <!-- Screen reader announcements -->
+  <div id="sr-announcer" aria-live="polite" style="position:absolute;left:-9999px;height:1px;width:1px;overflow:hidden;"></div>
+
+  <noscript>
+    <div style="max-width:1100px;margin:1rem auto;padding:12px;border:1px solid #ddd;border-radius:8px;background:#fff;">
+      Some interactive features (theme toggle, copy buttons, expand/collapse) need JavaScript. The content is fully visible without it.
+    </div>
+  </noscript>
 
   <script>
     // Theme toggle with localStorage
     const htmlEl = document.documentElement;
     const themeBtn = document.getElementById('themeBtn');
     function setTheme(t){ htmlEl.setAttribute('data-theme', t); localStorage.setItem('cv-theme', t); }
-    (function initTheme(){ const t = localStorage.getItem('cv-theme'); if(t){ setTheme(t); } })();
+    (function initTheme(){
+      const t = localStorage.getItem('cv-theme');
+      if(t){ setTheme(t); }
+      // label
+      if(themeBtn){ themeBtn.textContent = '🌓 Theme'; }
+    })();
     themeBtn?.addEventListener('click', ()=>{
       const cur = htmlEl.getAttribute('data-theme') || 'system';
       setTheme(cur === 'dark' ? 'light' : cur === 'light' ? 'system' : 'dark');
-      themeBtn.textContent = '🌓 ' + (htmlEl.getAttribute('data-theme')||'system');
     });
 
-    // Copy buttons (silent copy; label doesn't display number/email)
+    // Copy buttons with screen reader announcement
+    const announcer = document.getElementById('sr-announcer');
     document.querySelectorAll('[data-copy]')?.forEach(btn=>{
       btn.addEventListener('click', async ()=>{
+        const text = btn.getAttribute('data-copy');
         try {
-          await navigator.clipboard.writeText(btn.getAttribute('data-copy'));
+          await navigator.clipboard.writeText(text);
           const old = btn.textContent;
           btn.textContent='Copied!';
-          setTimeout(()=>btn.textContent=old, 1200);
+          announcer.textContent = 'Copied to clipboard';
+          setTimeout(()=>{ btn.textContent=old; announcer.textContent=''; }, 1200);
         } catch(e){ alert('Copy failed'); }
       });
     });
@@ -261,6 +303,36 @@
     // Expand/Collapse all
     document.getElementById('expandAll')?.addEventListener('click', ()=>document.querySelectorAll('details.accordion').forEach(d=>d.open=true));
     document.getElementById('collapseAll')?.addEventListener('click', ()=>document.querySelectorAll('details.accordion').forEach(d=>d.open=false));
+
+    // Auto-expand details before print; revert after print
+    const detailsEls = Array.from(document.querySelectorAll('details.accordion'));
+    const mqlPrint = window.matchMedia('print');
+    function openAll(){ detailsEls.forEach(d=>d.setAttribute('data-prev', d.open ? '1':'0')); detailsEls.forEach(d=>d.open=true); }
+    function revertAll(){ detailsEls.forEach(d=>{ if(d.getAttribute('data-prev')==='0') d.open=false; d.removeAttribute('data-prev'); }); }
+    window.addEventListener('beforeprint', openAll);
+    window.addEventListener('afterprint', revertAll);
+    mqlPrint.addEventListener?.('change', e=>{ if(e.matches) openAll(); else revertAll(); });
+
+    // Active link highlight in top nav as you scroll
+    const navMap = [
+      {id:'profile', link:'lnk-profile'},
+      {id:'education', link:'lnk-education'},
+      {id:'experience', link:'lnk-experience'},
+      {id:'actions', link:'lnk-actions'}
+    ];
+    const opts = {root:null, rootMargin:'-45% 0px -45% 0px', threshold:0};
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const found = navMap.find(n=>n.id===entry.target.id);
+        if(!found) return;
+        const a = document.getElementById(found.link);
+        if(entry.isIntersecting){
+          document.querySelectorAll('nav.topnav a').forEach(x=>x.removeAttribute('aria-current'));
+          a?.setAttribute('aria-current','true');
+        }
+      });
+    }, opts);
+    navMap.forEach(n=>{ const el = document.getElementById(n.id); if(el) io.observe(el); });
 
     // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
